@@ -15,24 +15,20 @@ using UnityEngine;
 
     public GameObject enemyPrefab; //Seccion para colocar el Prefab 
     public float intervaloTiempo = 10f; //Cada cuanto quiero hacer el spawn
-    private float temporizador = 0; //Cuenta el tiempo de juego
+    private float temporizador = 8; //Cuenta el tiempo de juego
     public Transform pivot; //Referencia la zona de spawn
-    public int maxObjetos = 3; //Limite de objetos en la zona de spawn
-    private float ronda = 1; 
+    public int maxObjetos = 3;
 
 
     private void Update()
     {
         // Aquí deberías implementar la lógica del temporizador.
         temporizador += Time.deltaTime; //Aumento el tiempo
-        if (temporizador >= intervaloTiempo)  // \
-        {                                     //  \
-            while (int i=0, i=ronda , i++)    //   \
-            {                                 //    \  Si se cumple el tiempo invoca el Prefab y reinicia el tiempo
-                Spawn();                      //     } Si se cumple el tiempo invoca el Prefab y reinicia el tiempo
-                temporizador = 0;             //    /
-            }                                 //   /
-        }                                     //  /
+        if (temporizador >= intervaloTiempo) // \
+        {                                    //  \
+            Spawn();                         //   } Si se cumple el tiempo invoca el Prefab y reinicia el tiempo
+            temporizador = 0;                //  /
+        }                                    // /
     }
 
     //FUNCIONES
