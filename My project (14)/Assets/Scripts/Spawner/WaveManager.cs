@@ -5,9 +5,9 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     public GameObject enemyPrefab; // Prefab del enemigo
-    public Transform[] spawnPoints; // Puntos de aparición de los enemigos
-    public int enemiesPerRound = 3; // Número de enemigos a invocar por ronda
-    private int currentRound = 1; // Contador de rondas
+    public Transform[] spawnPoints; // Puntos de apariciï¿½n de los enemigos
+    public int enemiesPerRound = 3; // Nï¿½mero de enemigos a invocar por ronda
+    public int currentRound = 1; // Contador de rondas
     private int activeEnemies = 0;
 
     void Start()
@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
             activeEnemies++;
-            yield return new WaitForSeconds(0.5f); // Pequeña pausa entre spawns
+            yield return new WaitForSeconds(0.5f); // Pequeï¿½a pausa entre spawns
         }
     }
 

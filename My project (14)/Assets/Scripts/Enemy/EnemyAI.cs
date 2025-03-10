@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
     private WaveManager gameManager;
-    [SerializeField] HealthBar healthBar;
+    private HealthBar healthBar;
 
     private Transform player;            // Referencia al jugador
     private NavMeshAgent agent;          // Componente de navegaci�n
@@ -15,6 +16,8 @@ public class EnemyAI : MonoBehaviour
     private float nextAttackTime = 0f;   // Ayudante de control de tiempo
     public float vida = 30f;            // Vida actual del enemigo
     public float vidaMax = 30f;            // Vida actual del enemigo
+    public int puntosPorEnemigo = 100;         // Puntos que otorga al morir
+    private int puntosActuales;
 
     void Awake()
     {
@@ -71,6 +74,7 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Enemigo eliminado");
         Destroy(gameObject);
         FindObjectOfType<WaveManager>().EnemyKilled(); // Resta un enemigo
+        puntosActuales += puntosPorEnemigo;
     }
 }
 
