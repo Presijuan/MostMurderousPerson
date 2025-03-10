@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         moveDirection = move * moveSpeed;
 
+
         // Aplicar gravedad
         if (controller.isGrounded)
         {
@@ -43,9 +44,6 @@ public class PlayerController : MonoBehaviour
         {
             verticalVelocity -= gravity * Time.deltaTime;
         }
-
-        moveDirection.y = verticalVelocity;
-        controller.Move(moveDirection * Time.deltaTime);
     }
 
     void RotateCamera()
@@ -61,5 +59,7 @@ public class PlayerController : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
+
+
 }
 
