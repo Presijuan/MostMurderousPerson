@@ -6,19 +6,26 @@ using UnityEngine.PlayerLoop;
 
 public class UIManager : MonoBehaviour
 {
-    private WaveManager waveManager;
-    public TMP_Text wave;
-    public TMP_Text score;
-    public TMP_Text bullets;
-    public TMP_Text health;
-    
-    void Update()
+    public TMP_Text wave;    // Asigno Text Mesh de oleadas
+    public TMP_Text score;   // Asigno Text Mesh de puntos
+    public TMP_Text bullets; // Asigno Text Mesh de balas
+    public TMP_Text health;  // Asigno Text Mesh de vida
+    private int round = 1;   // Contador de rondas en este codigo (es necesario ya que el otro contador de rondas no lo puedo llamar en LateUpdate)
+    private int points;
+
+    public void UpdateRound(int roundcount)
     {
-        string waveText = "Wave: " + (int) waveManager.currentRound;
-        wave.text = waveText;
+        round = roundcount;
     }
+
+    public void UpdateScore(int pointscount)
+    {
+        points += pointscount;
+    }
+
     void LateUpdate()
     {
-        
+        wave.text = "Wave " + round;
+        score.text = points + " puntos";
     }
 }

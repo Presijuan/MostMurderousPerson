@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float mouseSensitivity = 2f;
-    public Transform cameraTransform;
+    // Variables
+    public float moveSpeed = 5f;            // Velocidad de movimiento
+    public float mouseSensitivity = 2f;     // Sensivilidad de la camara
+    public Transform cameraTransform;       // Ubicación de la camara
 
-    private CharacterController controller;
-    private Vector3 moveDirection;
-    private float gravity = 9.8f;
-    private float verticalVelocity;
-    private float xRotation = 0f;
+    private CharacterController controller; // El prefab necesita el componente CharacterController
+    private Vector3 moveDirection;          // Ayuda al movimiento
+    private float gravity = 9.8f;           // Valor de gravedad (Puede ser publico)
+    private float verticalVelocity;         // Ayuda a la gravedad
+    private float xRotation = 0f;           // Valor para movimiento camara
 
     void Start()
     {
@@ -22,12 +23,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
-        RotateCamera();
+        MovePlayer();   // Mueve cuerpo
+        RotateCamera(); // Mueve camara
     }
 
     void MovePlayer()
     {
+        // Defino el vector de dirección
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -44,12 +46,14 @@ public class PlayerController : MonoBehaviour
             verticalVelocity -= gravity * Time.deltaTime;
         }
 
+        // Aplico el movimiento segun la dirección
         moveDirection.y = verticalVelocity;
         controller.Move(moveDirection * Time.deltaTime);
     }
 
     void RotateCamera()
     {
+        // Encuentro posicion mouse
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 

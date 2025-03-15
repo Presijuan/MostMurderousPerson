@@ -4,38 +4,46 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Este script va unido al prefab del enemigo
+
 public class EnemyAI : MonoBehaviour
 {
-    private WaveManager gameManager;
-    private HealthBar healthBar;
+    // LLamado de codigos
+    private HealthBar healthBar;         // Tomo el codigo HelthBar
+    private UIManager UIManager;         // Tomo el codigo UIManager
+
+    // Variables Principales
+    public float rangoDeAtaque = 2f;     // Rango de ataque
+    public float attackCooldown = 1f;    // Tiempo entre ataques
+    public float vidaMax = 30f;          // Vida maxima del enemigo
 
     private Transform player;            // Referencia al jugador
     private NavMeshAgent agent;          // Componente de navegaci�n
-    public float rangoDeAtaque = 2f;     // Rango de ataque
-    public float attackCooldown = 1f;    // Tiempo entre ataques
-    private float nextAttackTime = 0f;   // Ayudante de control de tiempo
-    public float vida = 30f;            // Vida actual del enemigo
-    public float vidaMax = 30f;            // Vida actual del enemigo
-    public int puntosPorEnemigo = 100;         // Puntos que otorga al morir
-    private int puntosActuales;
+    private float nextAttackTime = 0f;   // Ayudante de control de tiempo (NO EN USO)
+    private float vida = 30f;            // Vida actual del enemigo
 
+    // Variables Para Otros Codigos
+    public int puntosPorEnemigo = 100;   // Puntos que otorga al morir
+    
+    
     void Awake()
     {
-        healthBar = GetComponentInChildren<HealthBar>();
+        healthBar = GetComponentInChildren<HealthBar>(); // El prefab del enemigo debe tener un slider llamado "HealthBar"
     }
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();                          // Necesario para la AI
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Busca al jugador en la escena
-        healthBar.UpdateHealth(vida, vidaMax);
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Busca al jugador en la escena (Player debe tener tag "Player")
+        healthBar.UpdateHealth(vida, vidaMax);                         // Envio a HealthBar los datos necesarios
+        UIManager = FindObjectOfType<UIManager>();                     // Busca y asigna UIManager en la escena
     }
 
     void Update()
     {
-        if (player != null)
+        if (player != null) // Siempre y cuando haya un jugador se ejecuta lo siguiente
         {
-            float distance = Vector3.Distance(transform.position, player.position);
+            float distance = Vector3.Distance(transform.position, player.position); // Mido distancia entre Player y Enemy
 
             if (distance > rangoDeAtaque)
             {
@@ -53,28 +61,30 @@ public class EnemyAI : MonoBehaviour
     {
         if (Time.time >= nextAttackTime)
         {
-            Debug.Log("El enemigo ataca al jugador");
+            // Debug.Log("El enemigo ataca al jugador");
             nextAttackTime = Time.time + attackCooldown;
-            // Aqu� puedes agregar da�o al jugador
+            // Aqui debo agregar daño al jugador
         }
     }
 
     public void TakeDamage(float amount)
     {
-        vida -= amount;
-        healthBar.UpdateHealth(vida, vidaMax);
-        if (vida <= 0)
+        vida -= amount;                             // Le resto vida
+        if (vida > 0)
         {
-            Die();
+            healthBar.UpdateHealth(vida, vidaMax);  // Actualizo a HealthBar
+        }
+        else
+        {
+            Die();                                  // Muere
         }
     }
 
     void Die()
     {
-        Debug.Log("Enemigo eliminado");
-        Destroy(gameObject);
-        FindObjectOfType<WaveManager>().EnemyKilled(); // Resta un enemigo
-        puntosActuales += puntosPorEnemigo;
+        Destroy(gameObject);                           // Elimino el objeto Enemy
+        UIManager.UpdateScore(puntosPorEnemigo);       // Envio puntaje por enemigo a UIManager
+        FindObjectOfType<WaveManager>().EnemyKilled(); // Resta un enemigo en WaveManager
     }
 }
 

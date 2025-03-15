@@ -286,11 +286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a006e2e5bba134ebffa5d52e40d22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   rangoDeAtaque: 2
   attackCooldown: 1
-  vida: 30
   vidaMax: 30
+  puntosPorEnemigo: 100
 --- !u!195 &-8756268144073669981
 NavMeshAgent:
   m_ObjectHideFlags: 0

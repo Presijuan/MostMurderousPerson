@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject enemyPrefab; // Prefab del enemigo
+    private UIManager UIManager;
+
+    public GameObject enemyPrefab;  // Prefab del enemigo
     public Transform[] spawnPoints; // Puntos de aparici�n de los enemigos
-    public int enemiesPerRound = 3; // N�mero de enemigos a invocar por ronda
-    public int currentRound = 1; // Contador de rondas
-    private int activeEnemies = 0;
+    public int enemiesPerRound = 3; // Número de enemigos a invocar por ronda
+    public int currentRound = 1;    // Contador de rondas
+    private int activeEnemies = 0;  // LLevo un conteo de enemigos
 
     void Start()
     {
         StartCoroutine(SpawnEnemies());
+        UIManager = FindObjectOfType<UIManager>(); // Busca y asigna UIManager en la escena
     }
 
     IEnumerator SpawnEnemies()
@@ -20,9 +23,9 @@ public class WaveManager : MonoBehaviour
         for (int i = 0; i < enemiesPerRound * currentRound; i++)
         {
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            Instantiate(enemyPrefab, spawnPoint.position,Quaternion.identity);
             activeEnemies++;
-            yield return new WaitForSeconds(0.5f); // Peque�a pausa entre spawns
+            yield return new WaitForSeconds(0.5f); // Pequeña pausa entre spawns
         }
     }
 
@@ -39,6 +42,6 @@ public class WaveManager : MonoBehaviour
     {
         currentRound++;
         StartCoroutine(SpawnEnemies());
+        UIManager.UpdateRound(currentRound);
     }
 }
-
