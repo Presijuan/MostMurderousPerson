@@ -7,7 +7,7 @@ using UnityEngine.PlayerLoop;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Slider slider; //(Entender que es)
+    [SerializeField] private Slider slider; 
     public TMP_Text wave;    // Asigno Text Mesh de oleadas
     public TMP_Text score;   // Asigno Text Mesh de puntos
     public TMP_Text bullets; // Asigno Text Mesh de balas

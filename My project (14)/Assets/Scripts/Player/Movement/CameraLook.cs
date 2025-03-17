@@ -13,6 +13,7 @@ public class CameraLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor en pantalla
+        //Cursor.lockState = CursorLockMode.None;
 
     }
 
