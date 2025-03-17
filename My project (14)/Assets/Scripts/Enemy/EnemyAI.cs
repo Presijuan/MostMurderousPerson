@@ -11,15 +11,17 @@ public class EnemyAI : MonoBehaviour
     // LLamado de codigos
     private HealthBar healthBar;         // Tomo el codigo HelthBar
     private UIManager UIManager;         // Tomo el codigo UIManager
+    private PlayerHealth playerHealth;   // Tomo el codigo PlayerHealth
 
     // Variables Principales
     public float rangoDeAtaque = 2f;     // Rango de ataque
     public float attackCooldown = 1f;    // Tiempo entre ataques
+    public int damage = 10;              // Daño que hace el enemigo
     public float vidaMax = 30f;          // Vida maxima del enemigo
 
     private Transform player;            // Referencia al jugador
-    private NavMeshAgent agent;          // Componente de navegaci�n
-    private float nextAttackTime = 0f;   // Ayudante de control de tiempo (NO EN USO)
+    private NavMeshAgent agent;          // Componente de navegacion
+    private float nextAttackTime = 0f;   // Ayudante de control de tiempo
     private float vida = 30f;            // Vida actual del enemigo
 
     // Variables Para Otros Codigos
@@ -37,6 +39,7 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform; // Busca al jugador en la escena (Player debe tener tag "Player")
         healthBar.UpdateHealth(vida, vidaMax);                         // Envio a HealthBar los datos necesarios
         UIManager = FindObjectOfType<UIManager>();                     // Busca y asigna UIManager en la escena
+        playerHealth = FindObjectOfType<PlayerHealth>();               // Busca y asigna PlayerHealth en la escena
     }
 
     void Update()
@@ -59,11 +62,11 @@ public class EnemyAI : MonoBehaviour
 
     void Attack()
     {
+
         if (Time.time >= nextAttackTime)
         {
-            // Debug.Log("El enemigo ataca al jugador");
-            nextAttackTime = Time.time + attackCooldown;
-            // Aqui debo agregar daño al jugador
+            playerHealth.PlayerDamage(damage);           // Le quita vida al jugador
+            nextAttackTime = Time.time + attackCooldown; // Ayudante de control de tiempo
         }
     }
 

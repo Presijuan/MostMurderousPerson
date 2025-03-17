@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.PlayerLoop;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private Slider slider; //(Entender que es)
     public TMP_Text wave;    // Asigno Text Mesh de oleadas
     public TMP_Text score;   // Asigno Text Mesh de puntos
     public TMP_Text bullets; // Asigno Text Mesh de balas
@@ -27,5 +29,12 @@ public class UIManager : MonoBehaviour
     {
         wave.text = "Wave " + round;
         score.text = points + " puntos";
+
+    }
+
+    public void UpdatePlayerHealth(float currentValue, float maxValue)
+    {
+        slider.value = currentValue / maxValue;
+        health.text = currentValue.ToString();
     }
 }

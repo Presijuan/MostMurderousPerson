@@ -288,6 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangoDeAtaque: 2
   attackCooldown: 1
+  damage: 10
   vidaMax: 30
   puntosPorEnemigo: 100
 --- !u!195 &-8756268144073669981
