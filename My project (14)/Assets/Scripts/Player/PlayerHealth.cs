@@ -20,4 +20,15 @@ public class PlayerHealth : MonoBehaviour
         UIManager.UpdatePlayerHealth(health, maxHealth);     // Actualiza UIManager
         if (health <= 0) SceneManager.LoadScene("GameOver"); // Escena GameOver
     }
+
+    public void Heal(int heal)  // LLamado desde HealthPickup
+    {
+        if (health < 100)       // Verifico si se puede curar mas
+        {
+            health += heal;                                  // Calculo de curacion
+            if (health > 100) health = 100;                  // Limite de vida
+            UIManager.UpdatePlayerHealth(health, maxHealth); // Actualiza UIManager
+        }
+        
+    }
 }

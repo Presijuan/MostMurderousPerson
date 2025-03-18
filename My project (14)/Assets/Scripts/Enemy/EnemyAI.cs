@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     private HealthBar healthBar;         // Tomo el codigo HelthBar
     private UIManager UIManager;         // Tomo el codigo UIManager
     private PlayerHealth playerHealth;   // Tomo el codigo PlayerHealth
+    private EnemyDrops enemyDrops;       // Tomo el codigo EnemyDrops
 
     // Variables Principales
     public float rangoDeAtaque = 2f;     // Rango de ataque
@@ -40,6 +41,7 @@ public class EnemyAI : MonoBehaviour
         healthBar.UpdateHealth(vida, vidaMax);                         // Envio a HealthBar los datos necesarios
         UIManager = FindObjectOfType<UIManager>();                     // Busca y asigna UIManager en la escena
         playerHealth = FindObjectOfType<PlayerHealth>();               // Busca y asigna PlayerHealth en la escena
+        enemyDrops = FindObjectOfType<EnemyDrops>();                   // Busca y asigna EnemyDrops en la escena
     }
 
     void Update()
@@ -85,6 +87,7 @@ public class EnemyAI : MonoBehaviour
 
     void Die()
     {
+        enemyDrops.DropHealthPickup();                 // Probabilidad de drop
         Destroy(gameObject);                           // Elimino el objeto Enemy
         UIManager.UpdateScore(puntosPorEnemigo);       // Envio puntaje por enemigo a UIManager
         FindObjectOfType<WaveManager>().EnemyKilled(); // Resta un enemigo en WaveManager

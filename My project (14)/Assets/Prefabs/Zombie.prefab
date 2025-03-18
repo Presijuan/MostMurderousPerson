@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 5240101824578291714}
   - component: {fileID: 7282985292127340592}
   - component: {fileID: 5023566957000410788}
+  - component: {fileID: -7043533520412551863}
   - component: {fileID: 9108430283675457121}
   - component: {fileID: 6986812684228238530}
   m_Layer: 0
@@ -260,6 +261,20 @@ MonoBehaviour:
   damage: 10
   vidaMax: 30
   puntosPorEnemigo: 100
+--- !u!114 &-7043533520412551863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421115539084346328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d809724c9993240939434d07b34a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPickupPrefab: {fileID: 5469275433874251019, guid: a2c4a5c65f4f7dd4e8bd74751bfca754, type: 3}
+  dropChance: 0.15
 --- !u!195 &9108430283675457121
 NavMeshAgent:
   m_ObjectHideFlags: 0
