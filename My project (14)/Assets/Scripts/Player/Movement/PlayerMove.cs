@@ -22,13 +22,9 @@ public class newPlayerController : MonoBehaviour
         controller.Move(move*speed*Time.deltaTime);                  // Mueve el personaje en X,Z
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // Revisa si hay suelo bajo los pies
-        if (isGrounded && velocity.y < 0) velocity.y = -2f;                                 // Mantiene en el suelo (el personaje vuela)
-
-        if (Input.GetButtonDown("Jump")&& isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpheight * -2 * gravity); // Genera salto
-        }
-        velocity.y += gravity * Time.deltaTime;   // Caida del personaje
+        
+        if (Input.GetButtonDown("Jump")&& isGrounded) velocity.y = Mathf.Sqrt(jumpheight * -2 * -gravity); // Salto con caida
+        velocity.y -= gravity * Time.deltaTime;   // Gravedad
         controller.Move(velocity*Time.deltaTime); // Mueve el personaje en Y
     }
 }
