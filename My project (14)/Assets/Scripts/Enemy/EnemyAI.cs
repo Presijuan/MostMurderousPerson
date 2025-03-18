@@ -90,4 +90,3 @@ public class EnemyAI : MonoBehaviour
         FindObjectOfType<WaveManager>().EnemyKilled(); // Resta un enemigo en WaveManager
     }
 }
-

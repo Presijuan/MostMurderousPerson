@@ -12,29 +12,28 @@ public class UIManager : MonoBehaviour
     public TMP_Text score;   // Asigno Text Mesh de puntos
     public TMP_Text bullets; // Asigno Text Mesh de balas
     public TMP_Text health;  // Asigno Text Mesh de vida
-    private int round = 1;   // Contador de rondas en este codigo (es necesario ya que el otro contador de rondas no lo puedo llamar en LateUpdate)
+    private int round = 1;   // Contador de rondas en este codigo
     private int points;
 
-    public void UpdateRound(int roundcount)
+    public void UpdateRound(int roundcount) // Es llamado desde WaveManager
     {
-        round = roundcount; // Tomo el conteo desde el otro codigo
+        round = roundcount;                 // Tomo el conteo desde el otro codigo
     }
 
-    public void UpdateScore(int pointscount)
+    public void UpdateScore(int pointscount) // Es llamado desde EnemyAI
     {
-        points += pointscount; // LLevo un puntaje
+        points += pointscount;               // Actualizo el puntaje actual
     }
 
-    void LateUpdate() // Imprimo lo necesario a la pantalla
+    void LateUpdate()                    // Imprimo lo necesario a la pantalla
     {
-        wave.text = "Wave " + round;
-        score.text = points + " puntos";
-
+        wave.text = "Wave " + round;     // Creo string para wave
+        score.text = points + " puntos"; // Creo string para score
     }
 
-    public void UpdatePlayerHealth(float currentValue, float maxValue)
+    public void UpdatePlayerHealth(float currentValue, float maxValue) // Es llamado desde PlayerHealth
     {
-        slider.value = currentValue / maxValue;
-        health.text = currentValue.ToString();
+        slider.value = currentValue / maxValue;                        // Hago proporcion para slider
+        health.text = currentValue.ToString();                         // Creo string para health
     }
 }

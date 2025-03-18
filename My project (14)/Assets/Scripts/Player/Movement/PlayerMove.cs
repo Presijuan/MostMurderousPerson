@@ -4,47 +4,31 @@ using UnityEngine;
 
 public class newPlayerController : MonoBehaviour
 {
-    public CharacterController controller;
-    public float speed = 10f;
-
-    public float gravity = 9.8f;
-    public float jumpheight = 3;
-
-    public Transform groundCheck;
-    public float groundDistance = 0.3f;
-    public LayerMask groundMask;
-
-    Vector3 velocity;
-
-    bool isGrounded;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public CharacterController controller; // Identifico CharacterController
+    public float speed = 10f;              // Velocidad del Jugador
+    public float jumpheight = 3;           // Fuerza de salto
+    public Transform groundCheck;          // Punto de contacto con el suelo
+    public float groundDistance = 0.3f;    // Distancia minima para salto
+    public LayerMask groundMask;           // Layer designada como suelo
+    private float gravity = 9.8f;          // Gravedad a los saltos
+    private Vector3 velocity;              // Creo vector respecto a la velocidad
+    private bool isGrounded;               // Comprovacion del suelo
+    
     void Update()
     {
-        isGrounded= Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        float x = Input.GetAxis("Horizontal");                       // Lee eje Horizontal
+        float z = Input.GetAxis("Vertical");                         // Lee eje Vertical
+        Vector3 move = transform.right * x + transform.forward * z ; // Crea direccion para movimiento
+        controller.Move(move*speed*Time.deltaTime);                  // Mueve el personaje en X,Z
 
-        if (isGrounded && velocity.y < 0) 
-        {
-            velocity.y = -2f;
-        }
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z ;
-
-        controller.Move(move*speed*Time.deltaTime);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // Revisa si hay suelo bajo los pies
+        if (isGrounded && velocity.y < 0) velocity.y = -2f;                                 // Mantiene en el suelo (el personaje vuela)
 
         if (Input.GetButtonDown("Jump")&& isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpheight * -2 * gravity);
+            velocity.y = Mathf.Sqrt(jumpheight * -2 * gravity); // Genera salto
         }
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity*Time.deltaTime);
+        velocity.y += gravity * Time.deltaTime;   // Caida del personaje
+        controller.Move(velocity*Time.deltaTime); // Mueve el personaje en Y
     }
 }

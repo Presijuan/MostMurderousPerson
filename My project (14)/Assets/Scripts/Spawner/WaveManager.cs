@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    private UIManager UIManager;
+    private UIManager UIManager;    // Tomo el codigo UIManager
 
     public GameObject enemyPrefab;  // Prefab del enemigo
     public Transform[] spawnPoints; // Puntos de aparicion de los enemigos
@@ -14,13 +14,13 @@ public class WaveManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnEnemies());            // Es corrutina para hacer pausas dentro del codigo
         UIManager = FindObjectOfType<UIManager>(); // Busca y asigna UIManager en la escena
     }
 
     IEnumerator SpawnEnemies()
     {
-        for (int i = 0; i < enemiesPerRound * currentRound; i++)
+        for (int i = 0; i < enemiesPerRound * currentRound; i++)                     // Segun la ronda y enemgos por ronda hago spawn
         {
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)]; // Lugar aleatoreo de la lista spawnPoints
             Instantiate(enemyPrefab, spawnPoint.position,Quaternion.identity);       // Spawneo
@@ -31,17 +31,17 @@ public class WaveManager : MonoBehaviour
 
     public void EnemyKilled()
     {
-        activeEnemies--;
+        activeEnemies--;        // -1 al contador de enemigos activos
         if (activeEnemies == 0)
         {
-            NextRound();
+            NextRound();        // Si ya no quedan enemigos paso a la proxima ronda
         }
     }
 
     void NextRound()
     {
-        currentRound++;
-        StartCoroutine(SpawnEnemies());
-        UIManager.UpdateRound(currentRound);
+        currentRound++;                      // +1 al contador de rondas
+        StartCoroutine(SpawnEnemies());      // Al pasar de ronda genero nuevos enemigos
+        UIManager.UpdateRound(currentRound); // Actuializo la ronda en UI
     }
 }
