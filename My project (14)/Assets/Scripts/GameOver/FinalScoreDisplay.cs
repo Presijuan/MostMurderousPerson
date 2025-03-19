@@ -8,6 +8,6 @@ public class FinalScoreDisplay : MonoBehaviour
     void Start()
     {
         int finalScore = ScoreGameOver.instance.GetScore(); // Obtiene el puntaje
-        GetComponent<TMP_Text>().text = "Puntaje Final: " + finalScore;
+        GetComponent<TMP_Text>().text = finalScore + " Puntos";
     }
 }
