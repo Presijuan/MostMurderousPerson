@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AutoAim : MonoBehaviour
 {
-    public Camera playerCamera;      // Cámara del jugador
+    public Camera playerCamera;      // Cï¿½mara del jugador
     public Transform gun;            // Referencia al arma
     public LayerMask aimMask;        // Capas que se pueden detectar (enemigos, objetos, etc.)
-    public float maxDistance = 300f; // Distancia máxima del raycast
+    public float maxDistance = 300f; // Distancia mï¿½xima del raycast
 
     void Update()
     {
@@ -23,7 +23,7 @@ public class AutoAim : MonoBehaviour
         {
             gun.LookAt(hit.point);
         }
-        else // Si no golpea nada, apunta en la dirección de la cámara
+        else // Si no golpea nada, apunta en la direcciï¿½n de la cï¿½mara
         {
             gun.rotation = Quaternion.LookRotation(playerCamera.transform.forward);
         }
