@@ -32,7 +32,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6308601577649629585}
   - {fileID: 8051276804983555871}
   m_Father: {fileID: 3673430174873923087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,37 +193,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1294059687988321495
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6308601577649629585}
-  m_Layer: 0
-  m_Name: TransformBullet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6308601577649629585
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294059687988321495}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1789, y: -0.08, z: 0.5886}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1763750783077635026}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490308142422189146
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 19026177839507540, guid: c456a74682d8b4e4d9d9f93ce914ccf3, type: 3}
-  firePoint: {fileID: 6308601577649629585}
+  firePoint: {fileID: 7623023989643361558}
   bulletSpeed: 100
 --- !u!114 &7272373036926631807
 MonoBehaviour:
@@ -795,6 +763,11 @@ PrefabInstance:
 --- !u!4 &6696394239978814799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6548879496589514802, guid: 3d6c7430bd21a564489df266ea8864e1, type: 3}
+  m_PrefabInstance: {fileID: 435745397708039549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7623023989643361558 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8054265512548309099, guid: 3d6c7430bd21a564489df266ea8864e1, type: 3}
   m_PrefabInstance: {fileID: 435745397708039549}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3314470861747401532
