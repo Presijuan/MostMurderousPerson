@@ -257,7 +257,7 @@ MonoBehaviour:
   rangoDeAtaque: 2
   attackCooldown: 1
   damage: 10
-  vidaMax: 30
+  vidaMax: 40
   puntosPorEnemigo: 100
 --- !u!114 &-184173950159375579
 MonoBehaviour:
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d809724c9993240939434d07b34a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPickupPrefab: {fileID: 5469275433874251019, guid: a2c4a5c65f4f7dd4e8bd74751bfca754, type: 3}
+  healthPickupPrefab: {fileID: 2290423029495962301, guid: e52661d86f5a82e46a769a22c8d89267, type: 3}
   dropChance: 0.15
 --- !u!195 &7167604737725504204
 NavMeshAgent:

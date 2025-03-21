@@ -375,7 +375,7 @@ MonoBehaviour:
   gun: {fileID: 6696394239978814799}
   aimMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 563
   maxDistance: 300
 --- !u!1 &3601652508121384217
 GameObject:
