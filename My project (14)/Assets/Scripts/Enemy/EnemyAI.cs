@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     private Transform player;            // Referencia al jugador
     private NavMeshAgent agent;          // Componente de navegacion
     private float nextAttackTime = 0f;   // Ayudante de control de tiempo
-    private float vida = 30f;            // Vida actual del enemigo
+    private float vida;                  // Vida actual del enemigo
 
     // Variables Para Otros Codigos
     public int puntosPorEnemigo = 100;   // Puntos que otorga al morir
@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        vida = vidaMax;                                                // Calculo la vida
         agent = GetComponent<NavMeshAgent>();                          // Necesario para la AI
         player = GameObject.FindGameObjectWithTag("Player").transform; // Busca al jugador en la escena (Player debe tener tag "Player")
         healthBar.UpdateHealth(vida, vidaMax);                         // Envio a HealthBar los datos necesarios

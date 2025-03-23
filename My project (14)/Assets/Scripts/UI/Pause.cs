@@ -4,35 +4,33 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public bool isPaused = false;
+    public GameObject pauseMenu;  // Pantalla de pausa
+    public bool isPaused = false; // El juego no inicia pausado
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            if(isPaused==false)
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { // Si unde Esc o P Pausa
+            if(isPaused==false)                         // Si no esta pausado
             {
-                pauseMenu.SetActive(true);
-                isPaused = true;
-                Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                pauseMenu.SetActive(true);              // Pone pantalla de pausa
+                isPaused = true;                        // Guarda valor de pausado
+                Time.timeScale = 0;                     // Nada se mueve
+                Cursor.lockState = CursorLockMode.None; // Libero el cursor
+                Cursor.visible = true;                  // Muestro el cu
             }
-            else
+            else                                        // Si esta pausado hago lo contrario
             {
-                pauseMenu.SetActive(false);
-                isPaused = false;
-                Time.timeScale = 1;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                Resume();
             }
         }
+    }
+
+    public void Resume() // Codigo para continuar el juego (opuesto de la pausa)
+    {   
+        pauseMenu.SetActive(false);
+        isPaused = false;
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
