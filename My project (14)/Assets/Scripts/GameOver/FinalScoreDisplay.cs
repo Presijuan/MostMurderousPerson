@@ -9,8 +9,7 @@ public class FinalScoreDisplay : MonoBehaviour
     void Start()
     {
         finalScore = ScoreGameOver.instance.GetScore();         // Obtiene el puntaje
-         // Obtiene el puntaje
-        GetComponent<TMP_Text>().text = finalScore + " Puntos"; // Muestra el puntaje final
+        GetComponent<TMP_Text>().text = finalScore + " Points"; // Muestra el puntaje final
         SetHighScore();                                         // Establece el puntaje mas alto
     }
 
@@ -24,6 +23,6 @@ public class FinalScoreDisplay : MonoBehaviour
             highScore = finalScore;                         // Actualiza el puntaje mas alto
         }
 
-        highScoreText.text = highScore + " Puntos Record";  // Muestra el puntaje mas alto
+        highScoreText.text = "High Score: " +  highScore;   // Muestra el puntaje mas alto
     }
 }

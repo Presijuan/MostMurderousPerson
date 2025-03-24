@@ -12,7 +12,7 @@ public class ButtonManagerStart : MonoBehaviour
 
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("Spawner"); // Cambia a la escena principal
+        SceneManager.LoadScene("Escenario"); // Cambia a la escena principal
     }
     public void LoadCreditsScene()
     {

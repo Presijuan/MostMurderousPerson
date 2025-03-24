@@ -13,7 +13,7 @@ public class ButtonManager : MonoBehaviour
     public void LoadScene()
     {
         scoreGameOver.score = 0;                  // Reinicia el puntaje
-        SceneManager.LoadScene("Spawner");        // Cambia a la escena principal
+        SceneManager.LoadScene("Escenario");      // Cambia a la escena principal
         Cursor.lockState = CursorLockMode.Locked; // Bloqueo el cursor
         Cursor.visible = false;                   // No muestro el cursor
     }
