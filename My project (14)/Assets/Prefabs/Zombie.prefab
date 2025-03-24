@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPickupPrefab: {fileID: 2290423029495962301, guid: e52661d86f5a82e46a769a22c8d89267, type: 3}
-  dropChance: 0.15
+  dropChance: 0.25
 --- !u!195 &1708983234589388673
 NavMeshAgent:
   m_ObjectHideFlags: 0
