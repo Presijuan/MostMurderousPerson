@@ -86680,8 +86680,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6417479188910665766, guid: 4911d70d32c9e334cad0be77d08890fc, type: 3}
+      propertyPath: jumpTramp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417479188910665766, guid: 4911d70d32c9e334cad0be77d08890fc, type: 3}
+      propertyPath: jumpheight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417479188910665766, guid: 4911d70d32c9e334cad0be77d08890fc, type: 3}
       propertyPath: playerWeight
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6417479188910665766, guid: 4911d70d32c9e334cad0be77d08890fc, type: 3}
       propertyPath: trampMask.m_Bits
