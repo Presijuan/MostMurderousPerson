@@ -13,6 +13,7 @@ public class newPlayerController : MonoBehaviour
     private float gravity = 9.8f;          // Gravedad a los saltos
     private Vector3 velocity;              // Creo vector respecto a la velocidad
     private bool isGrounded;               // Comprovacion del suelo
+    private int playerWeight = 15;         // Peso del jugador
     
     void Update()
     {
@@ -24,7 +25,7 @@ public class newPlayerController : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // Revisa si hay suelo bajo los pies
         
         if (Input.GetButtonDown("Jump")&& isGrounded) velocity.y = Mathf.Sqrt(jumpheight * -2 * -gravity); // Salto con caida
-        velocity.y -= gravity * Time.deltaTime;   // Gravedad
+        velocity.y -= gravity * Time.deltaTime * playerWeight;   // Gravedad
         controller.Move(velocity*Time.deltaTime); // Mueve el personaje en Y
     }
 }
